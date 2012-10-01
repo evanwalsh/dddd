@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Download counts
+    %link{href: "/app.css", rel: "stylesheet"}
+  %body
+    #wrapper
+      %h1 Download counts
+
+      %ol#downloads
+        - @downloads.each do |download|
+          %li= download
