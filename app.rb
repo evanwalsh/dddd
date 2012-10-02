@@ -33,7 +33,7 @@ class App < Sinatra::Base
   end
 
   # Database stuff
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/my.db")
+  DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_OLIVE_URL'] || "sqlite://#{Dir.pwd}/my.db")
 
   class Download
     include DataMapper::Resource
