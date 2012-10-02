@@ -2,11 +2,14 @@
 %html
   %head
     %title Download counts
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1"}
     %link{href: "/app.css", rel: "stylesheet"}
   %body
     #wrapper
       %h1 Download counts
 
       %ol#downloads
-        - @downloads.each do |download|
-          %li= download
+        - @downloads.each do |url, downloads|
+          %li.download
+            %span.count= downloads.count
+            %a.url{href: url}= url
