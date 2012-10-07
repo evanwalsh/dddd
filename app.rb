@@ -3,14 +3,14 @@ require 'raven'
 
 class App < Sinatra::Base
 
-  Raven.configure do |config|
-    config.dsn = ENV['SENTRY_URL']
-  end
-
-  use Raven::Rack
-
   configure :production do
     require 'newrelic_rpm'
+
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_URL']
+    end
+
+    use Raven::Rack
   end
 
   get '/' do
