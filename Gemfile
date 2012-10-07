@@ -14,4 +14,5 @@ end
 
 group :production do
   gem "newrelic_rpm", "~> 3.4.2.1"
+  gem "sentry-raven", git: "https://github.com/coderanger/raven-ruby.git"
 end

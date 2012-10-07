@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/coderanger/raven-ruby.git
+  revision: 9a3aa8226e9a986fa717883493413aaa0be934ec
+  specs:
+    sentry-raven (0.3)
+      faraday (~> 0.8.0.rc2)
+      hashie
+      multi_json (~> 1.0)
+      uuidtools
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,11 +66,15 @@ GEM
       data_objects (= 0.10.9)
     do_sqlite3 (0.10.9)
       data_objects (= 0.10.9)
+    faraday (0.8.4)
+      multipart-post (~> 1.1)
     fastercsv (1.5.5)
     haml (3.1.7)
+    hashie (1.2.0)
     json (1.7.5)
     json_pure (1.7.5)
     multi_json (1.3.6)
+    multipart-post (1.1.5)
     newrelic_rpm (3.4.2.1)
     rack (1.4.1)
     rack-protection (1.2.0)
@@ -84,4 +98,5 @@ DEPENDENCIES
   haml (~> 3.1.7)
   newrelic_rpm (~> 3.4.2.1)
   sass (~> 3.2.1)
+  sentry-raven!
   sinatra (~> 1.3.3)
