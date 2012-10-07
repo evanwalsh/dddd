@@ -20,12 +20,18 @@ class App < Sinatra::Base
   end
 
   get '/track.*' do
-    is_valid = params[:url].match(/^http:\/\/media.evanwalsh.net(.*?\.mp3)/)
+    url = params[:url]
 
-    if is_valid
-      @download = Download.create(url: params[:url])
+    if url
 
-      redirect @download.url
+      valid = params[:url].match(/^http:\/\/media.evanwalsh.net(.*?\.mp3)/)
+      if valid
+        @download = Download.create(url: params[:url])
+        redirect @download.url
+      else
+        redirect '/'
+      end
+
     else
       redirect '/'
     end
