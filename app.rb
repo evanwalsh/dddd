@@ -3,6 +3,10 @@ require 'data_mapper'
 class App < Sinatra::Base
   CHECK_REGEX = /^http:\/\/media.evanwalsh.net(.*?\.mp3)/
 
+  configure :production do
+    require 'newrelic_rpm'
+  end
+
   get '/' do
     @downloads = Download.all.group_by{ |d| d.url }.sort_by{|url, downloads| downloads.count }.reverse
 

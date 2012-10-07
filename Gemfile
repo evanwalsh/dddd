@@ -11,3 +11,7 @@ gem "sass", "~> 3.2.1"
 group :development do
   gem "dm-sqlite-adapter", "~> 1.2.0"
 end
+
+group :production do
+  gem "newrelic_rpm", "~> 3.4.2.1"
+end
