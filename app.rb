@@ -23,7 +23,7 @@ class App < Sinatra::Base
     is_valid = params[:url].match(/^http:\/\/media.evanwalsh.net(.*?\.mp3)/)
 
     if is_valid
-      @download = create_download_for_url(params[:url])
+      @download = Download.create(url: params[:url])
 
       redirect @download.url
     else
@@ -33,13 +33,6 @@ class App < Sinatra::Base
 
   get '/app.css' do
     sass :app
-  end
-
-  def create_download_for_url track_url
-    download = Download.new(url: track_url)
-    download.save
-
-    download
   end
 
   # Database stuff
