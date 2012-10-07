@@ -1,7 +1,13 @@
 require 'data_mapper'
+require 'raven'
 
 class App < Sinatra::Base
-  CHECK_REGEX = /^http:\/\/media.evanwalsh.net(.*?\.mp3)/
+
+  Raven.configure do |config|
+    config.dsn = ENV['SENTRY_URL']
+  end
+
+  use Raven::Rack
 
   configure :production do
     require 'newrelic_rpm'
@@ -14,7 +20,7 @@ class App < Sinatra::Base
   end
 
   get '/track.*' do
-    is_valid = params[:url].match(CHECK_REGEX)
+    is_valid = params[:url].match(/^http:\/\/media.evanwalsh.net(.*?\.mp3)/)
 
     if is_valid
       @download = create_download_for_url(params[:url])

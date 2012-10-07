@@ -3,12 +3,6 @@ require 'bundler'
 
 Bundler.require
 
-require 'raven'
-Raven.configure do |config|
-  config.dsn = ENV['SENTRY_URL']
-end
+require './app'
 
-Raven.capture do
-  require './app'
-  run App
-end
+run App
